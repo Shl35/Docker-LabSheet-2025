@@ -1131,7 +1131,7 @@ docker exec booking-frontend-test cat /etc/nginx/conf.d/nginx.conf
 docker stop booking-frontend-test && docker rm booking-frontend-test
 ```
 
-> **📝 บันทึกผล**: booking-frontend:1.0 ขนาด `............` MB | booking-backend:1.0 ขนาด `............` MB
+> **📝 บันทึกผล**: booking-frontend:1.0 ขนาด `26.1` MB | booking-backend:1.0 ขนาด `188` MB
 
 ---
 
@@ -1139,16 +1139,15 @@ docker stop booking-frontend-test && docker rm booking-frontend-test
 
 1. ขนาดของ `booking-frontend:1.0` เทียบกับ `booking-backend:1.0` ต่างกันอย่างไร? เพราะเหตุใด?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_:booking-frontend:1.0 มีขนาดเล็กกว่า booking-backend:1.0 มาก (ประมาณ 26 MB vs 188 MB) เพราะ frontend เป็น Static Website (HTML, CSS, JS) ที่ Build แล้วและใช้ Nginx Serve โดยตรง ไม่ต้องติดตั้ง Node.js runtime หรือ dependencies ส่วน backend ต้องมี Node.js, library ต่าง ๆ และ runtime สำหรับรัน API ทำให้ขนาดใหญ่กว่า
 
 2. `location /api/` ใน nginx.conf ทำหน้าที่อะไร?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_: ทำหน้าที่เป็น Reverse Proxy สำหรับส่งคำขอที่ URL เริ่มต้นด้วย /api/ จาก frontend ไปยัง backend container (http://backend:5000) เพื่อให้ frontend เรียก API ได้โดยไม่ต้องระบุ IP ของ backend โดยตรง
 
 3. ทำไม Frontend Container ถึงใช้ชื่อ `backend` ในการ Proxy ได้?
 
-   > _คำตอบ_: ........................................................................
-
+   > _คำตอบ_: เพราะ frontend และ backend อยู่ใน Docker Network เดียวกัน (booking-network) ภายใน network แต่ละ container สามารถค้นหากันได้ด้วย Service Name หรือ Container Name ดังนั้น backend ถูกใช้เป็น hostname ที่ DNS ของ Docker resolve เป็น IP ของ backend container อัตโนมัติ
 ---
 
 ### 🔵 ขั้นตอนที่ 5: สร้าง Docker Compose
