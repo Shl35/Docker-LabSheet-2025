@@ -1385,6 +1385,7 @@ curl -X POST http://localhost:5000/api/bookings -H "Content-Type: application/js
 ```
 บันทึกรูปที่นี่
 ```
+![alt text](image-5.png)
 
 ---
 
@@ -1426,8 +1427,8 @@ docker network inspect booking-network \
 ```
 
 > **📝 บันทึกผลการทดลอง**:
-> - IP ของ frontend: `............`
-> - IP ของ backend: `............`
+> - IP ของ frontend: `172.18.0.4/16`
+> - IP ของ backend: `172.18.0.3/16`
 
 
 ---
@@ -1454,14 +1455,18 @@ docker compose events --json 2>/dev/null | head -20
 
 1. `docker compose ps` แสดงสถานะ Service อย่างไร?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_: คำสั่ง docker compose ps ใช้แสดงสถานะของ Service (Container) ที่ถูกจัดการโดย Docker Compose โดยจะแสดงข้อมูลสำคัญ เช่น ชื่อ Service / Container
+สถานะ (Status) เช่น Up, Exited, Restarting
+Port Mapping (เช่น 3000→80, 5000→5000)
+Health Status (healthy / unhealthy ถ้ามี healthcheck)
 
 2. IP Address ของแต่ละ Container ในผลจาก `docker network inspect` คืออะไร?
 
-   > _คำตอบ_: ........................................................................
-
+   > _คำตอบ_: IP Address ที่ได้จากคำสั่ง docker network inspect คือ IP ภายใน Docker Network (Virtual Network) ที่ Docker สร้างขึ้น เช่น:
+frontend → 172.18.0.4/16
+backend → 172.18.0.3/16
 3. SQLite database file (`booking.db`) ถูกสร้างใน Path ใดภายใน Container?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_: /app/data/booking.db — เป็น path ใน container ที่ใช้เก็บไฟล์ฐานข้อมูล SQLite โดยถูกกำหนดผ่าน DB_PATH และเชื่อมกับ volume ทำให้ข้อมูลไม่หาย
 
 ---
