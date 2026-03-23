@@ -487,7 +487,7 @@ drwxr-xr-x  reports/
 drwxr-xr-x  tests/
 -rw-r--r--  package.json
 -rw-r--r--  README.md
-```
+
 </details>
 
 
@@ -572,14 +572,18 @@ a1b2c3d4e5f6   nginx:alpine   "/docker-entrypoint.…"   2 seconds ago  Up 2 sec
 **บันทึกผลการทดลอง**
 ```
 บันทึกรูปผลการทดลอง คำสั่ง docker ps
-```
 
+```
+![alt text](image-1.png)
 เปิด Browser ไปที่ **http://localhost:8080** ควรเห็นหน้า `Welcome to nginx!`
 
 **อธิบาย แต่ละส่วนของคำสั่ง docker run -d --name my-nginx -p 8080:80 nginx:alpine**
 ```text
 อธิบายคำสั่งที่นี่
-
+รัน container จาก image nginx:alpine
+โดยให้ทำงานแบบ background (-d)
+ตั้งชื่อว่า my-nginx
+และเปิด port 8080 (เครื่องเรา) ไปที่ port 80 (ใน container)
 ```
 
 
@@ -624,6 +628,7 @@ docker exec -it my-nginx sh
    ```bash
    บันทึกรูปภาพที่นี่
    ```
+   ![alt text](image-2.png)
 </details>
 
 ---
