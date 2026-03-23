@@ -609,7 +609,7 @@ nginx -v                       # ดู Nginx version
 exit                           # ออกจาก Container Shell
 ```
 
-<details>
+
 
 <summary>💡 อธิบายคำสั่ง exec</summary>
 
@@ -632,7 +632,7 @@ docker exec -it my-nginx sh
    ```
    ![alt text](image-2.png)
    
-</details>
+
 
 ---
 
