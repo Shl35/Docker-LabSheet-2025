@@ -1263,15 +1263,18 @@ frontend
 
 1. docker-compose.yml คืออะไร มีประโยชน์อย่างไร?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_: docker-compose.yml คือไฟล์ configuration ของ Docker Compose ใช้สำหรับกำหนด หลายๆ container ให้ทำงานร่วมกันได้ง่ายในรูปแบบ service เช่น frontend, backend, database และ network/volume ที่เกี่ยวข้อง
+ประโยชน์:
 
 2. `restart: unless-stopped` หมายความว่าอย่างไร?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_: เป็นตัวเลือกของ Docker ที่บอก container ว่า จะรีสตาร์ทอัตโนมัติ เมื่อ container หยุดทำงานหรือ Docker daemon รีสตาร์ท
+unless-stopped หมายความว่า จะรีสตาร์ทเสมอ ยกเว้นผู้ใช้สั่ง docker stop หรือ docker rm ด้วยตัวเอง
 
 3. Named Volume `sqlite_data` ต่างจาก Bind Mount อย่างไร? และทำไมต้องใช้กับ SQLite?
 
-   > _คำตอบ_: ........................................................................
+   > _คำตอบ_:Named Volume: Docker จัดการ storage ให้เอง, อยู่ใน /var/lib/docker/volumes/... ของ host, สามารถแชร์ข้าม container ได้, Docker backup/restore ได้ง่าย
+Bind Mount: เก็บไฟล์บน host directory ที่กำหนดเอง เช่น C:/mydata, container เข้าถึงตรงกับ host filesystem
 
 ---
 
