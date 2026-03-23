@@ -474,11 +474,9 @@ cd booking-app-demo-2025
 # ดูโครงสร้างไฟล์
 ls -la
 ```
-
+```
 <details>
 <summary>✅ โครงสร้างที่ถูกต้อง</summary>
-
-```
 drwxr-xr-x  backend/
 drwxr-xr-x  frontend/
 drwxr-xr-x  newman/
