@@ -5,6 +5,8 @@ const db = new sqlite3.Database('bookings.db', (err) => {
   if (err) {
     console.error('เกิดข้อผิดพลาดในการเชื่อมต่อฐานข้อมูล:', err);
   } else {
+    // ตั้ง encoding เป็น UTF-8
+    db.run("PRAGMA encoding = 'UTF-8';");
     console.log('เชื่อมต่อฐานข้อมูลสำเร็จ');
     createTables();
   }
@@ -46,5 +48,7 @@ const createTables = () => {
     ['admin', adminPassword, 'admin']
   );
 };
+
+
 
 module.exports = db;

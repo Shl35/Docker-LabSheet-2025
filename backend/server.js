@@ -394,4 +394,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  next();
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
